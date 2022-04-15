@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <button onclick="decrease()">Decr</button>
+    <button onclick="increase()">Incr</button>
+    <script>
+        var h=document.querySelector("h1")
+        var counter =localStorage.getItem("counter")
+        if(counter === null){
+            localStorage.setItem("counter",0)
+        }
+        var count=counter
+        const increase =()=>{
+            count++
+            counter=count
+           localStorage.setItem("counter",JSON.stringify(counter))
+           h.innerText=JSON.parse(counter)
+        }
+        const decrease =()=>{
+            if(count -1 >=0){
+                count--
+           counter=count
+           localStorage.setItem("counter",JSON.stringify(counter))
+           h.innerText=JSON.parse(counter)
+            }else{
+                alert("Can not Print Negative Number")
+            }
+        }
+        h.innerText=JSON.parse(localStorage.getItem("counter"))
+    </script>
+</body>
+</html>
